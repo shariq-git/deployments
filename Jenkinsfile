@@ -1,14 +1,9 @@
 pipeline {
     agent any
-
-    environment {
-        KUBE_CONFIG = credentials('kubeconfig-secret-text')
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/shariq-git/jenkins.git', credentialsId: 'github-pat'
+                git branch: 'main', url: 'https://github.com/shariq-git/deployments.git',
             }
         }        
         stage('Deploy to Kubernetes') {
